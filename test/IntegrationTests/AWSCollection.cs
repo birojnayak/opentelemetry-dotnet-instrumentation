@@ -16,9 +16,9 @@ public class AWSCollection : ICollectionFixture<AWSFixture>
 
 public class AWSFixture : IAsyncLifetime
 {
-    private const int DynamoDBLocalPort = 8000;
+    private const int LocalHostPort = 4566;
 
-    private static readonly string AWSDynamoDBLocalImage = "amazon/dynamodb-local";
+    private static readonly string AWSLocalImage = "localstack/localstack";
     // ReadImageFrom("aws.Dockerfile");
 
     private IContainer? _container;
@@ -45,12 +45,14 @@ public class AWSFixture : IAsyncLifetime
 
     private static async Task<IContainer> LaunchAWSDynamoDBContainerAsync(int port)
     {
-        var containerName = string.Format("aws-dynamodb-local-storage{0}", port);
+        var containerName = string.Format("aws-localstack{0}", port);
+
         var containersBuilder = new ContainerBuilder()
-            .WithImage(AWSDynamoDBLocalImage)
+            .WithImage(AWSLocalImage)
             .WithName(containerName)
-            .WithPortBinding(DynamoDBLocalPort, DynamoDBLocalPort)
-            .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(DynamoDBLocalPort));
+            .WithPortBinding(LocalHostPort, LocalHostPort)
+            .WithPortBinding(4510, 4559)
+            .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(LocalHostPort));
 
         var container = containersBuilder.Build();
         await container.StartAsync();
