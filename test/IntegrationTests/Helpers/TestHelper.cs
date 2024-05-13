@@ -134,6 +134,7 @@ public abstract class TestHelper
 
         // get path to test application that the profiler will attach to
         var testApplicationPath = EnvironmentHelper.GetTestApplicationPath(testSettings.PackageVersion, testSettings.Framework, startupMode);
+        testApplicationPath = "/Users/yiranwan/workplace/biroj_poc/opentelemetry-dotnet-instrumentation/test/test-applications/integrations/bin/TestApplication.AWS/Debug/net8.0/TestApplication.AWS.dll";
         if (!File.Exists(testApplicationPath))
         {
             throw new Exception($"application not found: {testApplicationPath}");

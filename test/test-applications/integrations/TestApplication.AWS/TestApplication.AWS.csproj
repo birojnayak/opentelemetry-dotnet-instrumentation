@@ -2,5 +2,8 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.DynamoDBv2" VersionOverride="$(LibraryVersion)" />
+    <PackageReference Include="AWSSDK.S3" VersionOverride="$(LibraryVersion)" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" VersionOverride="$(LibraryVersion)" />
+    <PackageReference Include="AWSSDK.SQS" VersionOverride="$(LibraryVersion)" />
   </ItemGroup>
 </Project>

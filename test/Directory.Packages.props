@@ -1,6 +1,10 @@
 <Project>
   <Import Project="..\Directory.Packages.props" />
   <ItemGroup>
+    <PackageVersion Include="Amazon.SQS" Version="0.33.0" />
+    <PackageVersion Include="AWSSDK.S3" Version="3.7.307.31" />
+    <PackageVersion Include="AWSSDK.SimpleNotificationService" Version="3.7.301.37" />
+    <PackageVersion Include="AWSSDK.SQS" Version="3.7.301.1" />
     <PackageVersion Include="Azure.Storage.Blobs" Version="12.19.1" />
     <PackageVersion Include="AWSSDK.DynamoDBv2" Version="3.7.302" />
     <PackageVersion Include="Elastic.Clients.Elasticsearch" Version="8.13.5" />
